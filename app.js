@@ -53,6 +53,16 @@ const T = {
     "order.h2": "Row-level security is on for every table, so the public API reads nothing and only the server reaches the data.",
     "order.h3": "Order numbers come from a counter incremented in the same transaction as the order, never from MAX+1.",
     "order.h4": "Status follows a strict state machine, and every change writes an event to the order's history.",
+    "status.live": "Live",
+    "cbot.tag": "A Telegram bot that qualifies visitors and forwards leads.",
+    "cbot.desc": "A Telegram bot that qualifies new visitors with a short guided brief, answers common questions, and forwards each lead to me. My replies are relayed back to them through the bot.",
+    "cbot.b1": "Guided brief: project type, budget and deadline",
+    "cbot.b2": "Answers common questions in English, French and Arabic",
+    "cbot.b3": "My replies are relayed back to the visitor",
+    "cbot.h1": "Stateless by design: the brief travels inside button data and prompt text, so there is no database to run.",
+    "cbot.h2": "A secret header check rejects any request that doesn't come from Telegram, and only the owner can relay replies.",
+    "cbot.h3": "Visitor names are escaped before they reach the owner, and long messages are truncated.",
+    "cbot.h4": "Unit tests cover the flow, the FAQ matching and the abuse cases, and the code runs as a single serverless function.",
     "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, web developer"
   },
   fr: {
@@ -107,6 +117,16 @@ const T = {
     "order.h2": "La sécurité au niveau des lignes est activée sur chaque table : l'API publique ne lit rien, seul le serveur accède aux données.",
     "order.h3": "Les numéros de commande viennent d'un compteur incrémenté dans la même transaction que la commande, jamais par MAX+1.",
     "order.h4": "Le statut suit une machine à états stricte, et chaque changement écrit un événement dans l'historique de la commande.",
+    "status.live": "En ligne",
+    "cbot.tag": "Un bot Telegram qui qualifie les visiteurs et transmet les demandes.",
+    "cbot.desc": "Un bot Telegram qui qualifie les nouveaux visiteurs avec un court cadrage guidé, répond aux questions courantes et me transmet chaque demande. Mes réponses leur sont renvoyées par le bot.",
+    "cbot.b1": "Cadrage guidé : type de projet, budget et délai",
+    "cbot.b2": "Répond aux questions courantes en anglais, français et arabe",
+    "cbot.b3": "Mes réponses sont renvoyées au visiteur",
+    "cbot.h1": "Sans état par conception : le cadrage voyage dans les données des boutons et le texte des invites, donc aucune base de données à gérer.",
+    "cbot.h2": "Un en-tête secret rejette toute requête qui ne vient pas de Telegram, et seul le propriétaire peut relayer des réponses.",
+    "cbot.h3": "Les noms des visiteurs sont échappés avant d'arriver au propriétaire, et les messages trop longs sont tronqués.",
+    "cbot.h4": "Des tests unitaires couvrent le parcours, la correspondance de la FAQ et les cas d'abus, et le code tourne comme une seule fonction serverless.",
     "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, développeur web"
   },
   ar: {
@@ -161,6 +181,16 @@ const T = {
     "order.h2": "أمان مستوى الصفوف مفعّل على كل جدول: الواجهة العامة لا تقرأ شيئًا، والخادم وحده يصل إلى البيانات.",
     "order.h3": "أرقام الطلبات تأتي من عدّاد يزداد في نفس معاملة الطلب، وليس بطريقة MAX+1.",
     "order.h4": "تتبع الحالة آلة حالات صارمة، وكل تغيير يكتب حدثًا في سجل الطلب.",
+    "status.live": "يعمل الآن",
+    "cbot.tag": "بوت تيليغرام يقيّم الزوار ويحوّل الطلبات.",
+    "cbot.desc": "بوت تيليغرام يقيّم الزوار الجدد بأسئلة قصيرة موجّهة، ويجيب عن الأسئلة الشائعة، ويحوّل كل طلب إليّ. وتصل ردودي إليهم عبر البوت.",
+    "cbot.b1": "أسئلة موجّهة: نوع المشروع والميزانية والموعد",
+    "cbot.b2": "يجيب عن الأسئلة الشائعة بالإنجليزية والفرنسية والعربية",
+    "cbot.b3": "تُرسل ردودي إلى الزائر",
+    "cbot.h1": "بلا حالة بالتصميم: تنتقل الأسئلة داخل بيانات الأزرار ونص الرسائل، فلا توجد قاعدة بيانات لإدارتها.",
+    "cbot.h2": "ترويسة سرية ترفض أي طلب لا يأتي من تيليغرام، ولا يستطيع تمرير الردود سوى المالك.",
+    "cbot.h3": "تُنقّى أسماء الزوار قبل وصولها إلى المالك، وتُقتطع الرسائل الطويلة.",
+    "cbot.h4": "اختبارات وحدات تغطي المسار ومطابقة الأسئلة الشائعة وحالات إساءة الاستخدام، ويعمل الكود كدالة واحدة بلا خادم.",
     "foot": "© 2026 حسام جرير", "title": "حسام جرير، مطوّر ويب"
   }
 };
@@ -169,7 +199,8 @@ const PROJECTS = {
   fatura: { link: "https://github.com/Sameeva/FaturaDZ", demo: "https://fatura-dz.vercel.app", status: "dev",
             shots: [["img/fatura-list.png", 410], ["img/fatura-invoice.png", 650], ["img/fatura-editor.png", 702]], hood: 4 },
   order:  { link: "https://github.com/Sameeva/OrderDZ", demo: null, status: "dev", shots: [], hood: 4 },
-  menu:   { link: null, demo: null, status: "soon", shots: [], hood: 0 }
+  menu:   { link: null, demo: null, status: "soon", shots: [], hood: 0 },
+  cbot:   { link: "https://github.com/Sameeva/contact-bot", demo: "https://t.me/eevva_bot", status: "live", shots: [], hood: 4 }
 };
 
 const root = document.documentElement;
@@ -210,7 +241,7 @@ const link = document.getElementById("sheet-link");
 
 function fillSheet(id) {
   const p = PROJECTS[id];
-  const names = { fatura: "FaturaDZ", order: "OrderDZ", menu: "MenuDZ" };
+  const names = { fatura: "FaturaDZ", order: "OrderDZ", menu: "MenuDZ", cbot: "Contact bot" };
   const li = (text) => Object.assign(document.createElement("li"), { textContent: text });
   document.getElementById("sheet-title").textContent = names[id];
   const st = document.getElementById("sheet-status");
