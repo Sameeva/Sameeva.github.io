@@ -116,7 +116,7 @@ h3 { font-size: 1.15rem; letter-spacing: -.01em; }
 .tile:active { transform: scale(.97); transition-duration: .1s; }
 @media (hover: hover) { .tile:hover { transform: translateY(-3px); } }
 .tname { margin-top: auto; font-size: 1.6rem; font-weight: 700; letter-spacing: -.03em; }
-.ttag { color: var(--muted); font-size: 15px; line-height: 1.4; }
+.ttag { color: var(--muted); font-size: 15px; line-height: 1.4; min-height: 2.8em; }
 .tile::after {
   content: ""; position: absolute; inset: 0; z-index: -1; opacity: .5;
   color: var(--accent);
