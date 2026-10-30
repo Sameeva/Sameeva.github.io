@@ -41,7 +41,7 @@ const T = {
     "p3.t": "Deliver",
     "p3.d": "You get the working product and a short handover so you can use it right away.",
     "hood.title": "Under the hood",
-    "link.demo": "Try the live demo",
+    "link.demo": "Try the live demo", "link.bot": "Try the bot",
     "fatura.alt1": "FaturaDZ documents list with a draft and finalized invoices",
     "fatura.alt2": "A finalized invoice with line items, VAT per rate and totals",
     "fatura.alt3": "The invoice editor",
@@ -105,7 +105,7 @@ const T = {
     "p3.t": "Livraison",
     "p3.d": "Vous recevez le produit fonctionnel et une courte prise en main pour l'utiliser tout de suite.",
     "hood.title": "Sous le capot",
-    "link.demo": "Essayer la démo en ligne",
+    "link.demo": "Essayer la démo en ligne", "link.bot": "Essayer le bot",
     "fatura.alt1": "Liste des documents FaturaDZ avec un brouillon et des factures finalisées",
     "fatura.alt2": "Une facture finalisée avec ses lignes, la TVA par taux et les totaux",
     "fatura.alt3": "L'éditeur de facture",
@@ -169,7 +169,7 @@ const T = {
     "p3.t": "التسليم",
     "p3.d": "تستلم المنتج جاهزًا مع شرح مختصر لتستعمله فورًا.",
     "hood.title": "خلف الكواليس",
-    "link.demo": "جرّب النسخة التجريبية",
+    "link.demo": "جرّب النسخة التجريبية", "link.bot": "جرّب البوت",
     "fatura.alt1": "قائمة مستندات FaturaDZ مع مسودة وفواتير نهائية",
     "fatura.alt2": "فاتورة نهائية مع البنود والضريبة لكل نسبة والمجاميع",
     "fatura.alt3": "محرر الفواتير",
@@ -200,7 +200,7 @@ const PROJECTS = {
             shots: [["img/fatura-list.png", 410], ["img/fatura-invoice.png", 650], ["img/fatura-editor.png", 702]], hood: 4 },
   order:  { link: "https://github.com/Sameeva/OrderDZ", demo: null, status: "dev", shots: [], hood: 4 },
   menu:   { link: null, demo: null, status: "soon", shots: [], hood: 0 },
-  cbot:   { link: "https://github.com/Sameeva/contact-bot", demo: "https://t.me/eevva_bot", status: "live", shots: [], hood: 4 }
+  cbot:   { link: "https://github.com/Sameeva/contact-bot", demo: "https://t.me/eevva_bot", demoLabel: "link.bot", status: "live", shots: [], hood: 4 }
 };
 
 const root = document.documentElement;
@@ -262,7 +262,7 @@ function fillSheet(id) {
 
   const demo = document.getElementById("sheet-demo");
   demo.hidden = !p.demo;
-  if (p.demo) { demo.href = p.demo; demo.textContent = t("link.demo"); }
+  if (p.demo) { demo.href = p.demo; demo.textContent = t(p.demoLabel ?? "link.demo"); }
 
   if (p.link) {
     link.href = p.link;
