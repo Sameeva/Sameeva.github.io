@@ -68,6 +68,20 @@
   </section>
 
   <section class="block">
+    <h2 data-i18n="process.title"></h2>
+    <ol class="rows steps">
+      <li><h3 data-i18n="p1.t"></h3><p data-i18n="p1.d"></p></li>
+      <li><h3 data-i18n="p2.t"></h3><p data-i18n="p2.d"></p></li>
+      <li><h3 data-i18n="p3.t"></h3><p data-i18n="p3.d"></p></li>
+    </ol>
+  </section>
+
+  <section id="about" class="block about">
+    <h2 data-i18n="about.title"></h2>
+    <p data-i18n="about.body"></p>
+  </section>
+
+  <section class="block">
     <h2 data-i18n="tools.title"></h2>
     <ul class="chips" dir="ltr">
       <li>Next.js</li><li>TypeScript</li><li>Prisma</li><li>PostgreSQL</li>
@@ -90,10 +104,14 @@
   <div class="sheet-body">
     <span class="status" id="sheet-status"></span>
     <h3 id="sheet-title"></h3>
+    <div class="shots" id="sheet-shots" hidden></div>
     <p class="sheet-desc" id="sheet-desc"></p>
     <ul class="points" id="sheet-points"></ul>
+    <h4 id="hood-title" data-i18n="hood.title" hidden></h4>
+    <ul class="points" id="sheet-hood" hidden></ul>
     <div class="sheet-actions">
-      <a class="btn primary" id="sheet-link" target="_blank" rel="noopener"></a>
+      <a class="btn primary" id="sheet-demo" target="_blank" rel="noopener" hidden></a>
+      <a class="btn" id="sheet-link" target="_blank" rel="noopener"></a>
       <button type="button" class="btn" id="sheet-close" data-i18n="close"></button>
     </div>
   </div>

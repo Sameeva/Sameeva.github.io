@@ -182,6 +182,16 @@ h3 { font-size: 1.15rem; letter-spacing: -.01em; }
 .sheet-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .sheet-actions .btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
 
+.shots { display: flex; gap: 12px; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; align-items: flex-start; }
+.shots[hidden], .points[hidden], #hood-title[hidden], .btn[hidden] { display: none; }
+.shots img { flex: 0 0 86%; width: 86%; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px var(--line); scroll-snap-align: start; background: #fff; }
+#hood-title { margin-top: 10px; font-size: 1.1rem; letter-spacing: -.01em; }
+
+.steps { list-style: none; counter-reset: step; padding: 0; }
+.steps li { display: grid; grid-template-columns: 36px 1fr; column-gap: 14px; }
+.steps li::before { counter-increment: step; content: counter(step); grid-row: span 2; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 650; font-size: 15px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+.about p { max-width: 58ch; color: var(--muted); font-size: 1.1rem; margin-top: -8px; }
+
 /* one orchestrated entrance */
 @media (prefers-reduced-motion: no-preference) {
   .hero > * { animation: rise .8s var(--spring) both; }

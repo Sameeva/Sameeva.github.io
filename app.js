@@ -31,6 +31,28 @@ const T = {
     "s3.title": "Databases", "s3.desc": "Schema design, SQL queries and performance tuning.",
     "tools.title": "Tools",
     "contact.title": "Have a project in mind?", "contact.body": "Find me on GitHub and tell me what you need.", "contact.cta": "Go to my GitHub profile",
+    "about.title": "About",
+    "about.body": "I'm Houssam, a developer with a background in databases. I build web products from start to finish, and I care about the parts people don't see: correct numbers, clean data and fast pages. You work with me directly, from your first message to the final delivery.",
+    "process.title": "How we work together",
+    "p1.t": "Brief",
+    "p1.d": "You describe what you need. I reply with questions, a clear scope and a price.",
+    "p2.t": "Build",
+    "p2.d": "I build in small steps and show progress along the way, so nothing comes as a surprise.",
+    "p3.t": "Deliver",
+    "p3.d": "You get the working product and a short handover so you can use it right away.",
+    "hood.title": "Under the hood",
+    "link.demo": "Try the live demo",
+    "fatura.alt1": "FaturaDZ documents list with a draft and finalized invoices",
+    "fatura.alt2": "A finalized invoice with line items, VAT per rate and totals",
+    "fatura.alt3": "The invoice editor",
+    "fatura.h1": "All money is stored as whole cents and rounded once per tax rate, so totals always add up.",
+    "fatura.h2": "Numbering is sequential per document type and year, assigned in a single transaction when a document is finalized.",
+    "fatura.h3": "Everything runs in the browser: data stays in IndexedDB on the user's device, with validated JSON backup and restore.",
+    "fatura.h4": "Unit and property tests, a strict content security policy, and CI on every push.",
+    "order.h1": "Multi-store from the start: every table carries a store id and every query is scoped to the signed-in store.",
+    "order.h2": "Row-level security is on for every table, so the public API reads nothing and only the server reaches the data.",
+    "order.h3": "Order numbers come from a counter incremented in the same transaction as the order, never from MAX+1.",
+    "order.h4": "Status follows a strict state machine, and every change writes an event to the order's history.",
     "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, web developer"
   },
   fr: {
@@ -63,6 +85,28 @@ const T = {
     "s3.title": "Bases de données", "s3.desc": "Conception de schémas, requêtes SQL et optimisation des performances.",
     "tools.title": "Outils",
     "contact.title": "Un projet en tête ?", "contact.body": "Retrouvez-moi sur GitHub et dites-moi ce dont vous avez besoin.", "contact.cta": "Voir mon profil GitHub",
+    "about.title": "À propos",
+    "about.body": "Je suis Houssam, développeur avec une formation en bases de données. Je construis des produits web de bout en bout, et je soigne ce que les gens ne voient pas : des montants justes, des données propres et des pages rapides. Vous travaillez directement avec moi, de votre premier message à la livraison finale.",
+    "process.title": "Comment on travaille ensemble",
+    "p1.t": "Cadrage",
+    "p1.d": "Vous décrivez votre besoin. Je réponds avec des questions, un périmètre clair et un prix.",
+    "p2.t": "Réalisation",
+    "p2.d": "Je construis par petites étapes et je montre l'avancement, pour qu'il n'y ait aucune surprise.",
+    "p3.t": "Livraison",
+    "p3.d": "Vous recevez le produit fonctionnel et une courte prise en main pour l'utiliser tout de suite.",
+    "hood.title": "Sous le capot",
+    "link.demo": "Essayer la démo en ligne",
+    "fatura.alt1": "Liste des documents FaturaDZ avec un brouillon et des factures finalisées",
+    "fatura.alt2": "Une facture finalisée avec ses lignes, la TVA par taux et les totaux",
+    "fatura.alt3": "L'éditeur de facture",
+    "fatura.h1": "Les montants sont stockés en centimes entiers et arrondis une seule fois par taux de TVA, donc les totaux sont toujours justes.",
+    "fatura.h2": "La numérotation est séquentielle par type de document et par année, attribuée en une seule transaction à la finalisation.",
+    "fatura.h3": "Tout fonctionne dans le navigateur : les données restent dans IndexedDB sur l'appareil, avec sauvegarde et restauration JSON validées.",
+    "fatura.h4": "Tests unitaires et par propriétés, politique de sécurité de contenu stricte et CI à chaque push.",
+    "order.h1": "Multi-boutique dès le départ : chaque table porte un identifiant de boutique et chaque requête est limitée à la boutique connectée.",
+    "order.h2": "La sécurité au niveau des lignes est activée sur chaque table : l'API publique ne lit rien, seul le serveur accède aux données.",
+    "order.h3": "Les numéros de commande viennent d'un compteur incrémenté dans la même transaction que la commande, jamais par MAX+1.",
+    "order.h4": "Le statut suit une machine à états stricte, et chaque changement écrit un événement dans l'historique de la commande.",
     "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, développeur web"
   },
   ar: {
@@ -95,14 +139,37 @@ const T = {
     "s3.title": "قواعد البيانات", "s3.desc": "تصميم المخططات واستعلامات SQL وتحسين الأداء.",
     "tools.title": "الأدوات",
     "contact.title": "هل لديك مشروع؟", "contact.body": "تجدني على GitHub، أخبرني بما تحتاجه.", "contact.cta": "افتح حسابي على GitHub",
+    "about.title": "نبذة عني",
+    "about.body": "أنا حسام، مطوّر بخلفية في قواعد البيانات. أبني منتجات الويب من البداية إلى النهاية، وأهتم بما لا يراه الناس: أرقام صحيحة وبيانات نظيفة وصفحات سريعة. تتعامل معي مباشرة، من أول رسالة حتى التسليم النهائي.",
+    "process.title": "كيف نعمل معًا",
+    "p1.t": "الاتفاق",
+    "p1.d": "تصف لي ما تحتاجه. أرد عليك بأسئلة ونطاق واضح وسعر.",
+    "p2.t": "التنفيذ",
+    "p2.d": "أبني على مراحل صغيرة وأعرض لك التقدم أولًا بأول، فلا تكون هناك مفاجآت.",
+    "p3.t": "التسليم",
+    "p3.d": "تستلم المنتج جاهزًا مع شرح مختصر لتستعمله فورًا.",
+    "hood.title": "خلف الكواليس",
+    "link.demo": "جرّب النسخة التجريبية",
+    "fatura.alt1": "قائمة مستندات FaturaDZ مع مسودة وفواتير نهائية",
+    "fatura.alt2": "فاتورة نهائية مع البنود والضريبة لكل نسبة والمجاميع",
+    "fatura.alt3": "محرر الفواتير",
+    "fatura.h1": "تُخزَّن المبالغ كأعداد صحيحة من السنتيمات وتُقرَّب مرة واحدة لكل نسبة ضريبة، فتتطابق المجاميع دائمًا.",
+    "fatura.h2": "الترقيم متسلسل لكل نوع مستند وكل سنة، ويُمنح في معاملة واحدة عند الإنهاء.",
+    "fatura.h3": "كل شيء يعمل داخل المتصفح: تبقى البيانات في IndexedDB على جهاز المستخدم، مع نسخ احتياطي واستعادة بصيغة JSON يتم التحقق منها.",
+    "fatura.h4": "اختبارات وحدات واختبارات خصائص، وسياسة أمان محتوى صارمة، وتكامل مستمر مع كل دفعة.",
+    "order.h1": "متعدد المتاجر منذ البداية: كل جدول يحمل معرّف المتجر وكل استعلام مقيّد بالمتجر المسجَّل دخوله.",
+    "order.h2": "أمان مستوى الصفوف مفعّل على كل جدول: الواجهة العامة لا تقرأ شيئًا، والخادم وحده يصل إلى البيانات.",
+    "order.h3": "أرقام الطلبات تأتي من عدّاد يزداد في نفس معاملة الطلب، وليس بطريقة MAX+1.",
+    "order.h4": "تتبع الحالة آلة حالات صارمة، وكل تغيير يكتب حدثًا في سجل الطلب.",
     "foot": "© 2026 حسام جرير", "title": "حسام جرير، مطوّر ويب"
   }
 };
 
 const PROJECTS = {
-  fatura: { link: "https://github.com/Sameeva/FaturaDZ", status: "dev" },
-  order:  { link: "https://github.com/Sameeva/OrderDZ",  status: "dev" },
-  menu:   { link: null,                                   status: "soon" }
+  fatura: { link: "https://github.com/Sameeva/FaturaDZ", demo: "https://fatura-dz.vercel.app", status: "dev",
+            shots: [["img/fatura-list.png", 410], ["img/fatura-invoice.png", 650], ["img/fatura-editor.png", 702]], hood: 4 },
+  order:  { link: "https://github.com/Sameeva/OrderDZ", demo: null, status: "dev", shots: [], hood: 4 },
+  menu:   { link: null, demo: null, status: "soon", shots: [], hood: 0 }
 };
 
 const root = document.documentElement;
@@ -144,14 +211,28 @@ const link = document.getElementById("sheet-link");
 function fillSheet(id) {
   const p = PROJECTS[id];
   const names = { fatura: "FaturaDZ", order: "OrderDZ", menu: "MenuDZ" };
+  const li = (text) => Object.assign(document.createElement("li"), { textContent: text });
   document.getElementById("sheet-title").textContent = names[id];
   const st = document.getElementById("sheet-status");
   st.textContent = t("status." + p.status);
   st.className = "status " + p.status;
   document.getElementById("sheet-desc").textContent = t(id + ".desc");
-  document.getElementById("sheet-points").replaceChildren(
-    ...[1, 2, 3].map((n) => Object.assign(document.createElement("li"), { textContent: t(`${id}.b${n}`) }))
-  );
+  document.getElementById("sheet-points").replaceChildren(...[1, 2, 3].map((n) => li(t(`${id}.b${n}`))));
+
+  const shots = document.getElementById("sheet-shots");
+  shots.replaceChildren(...p.shots.map(([src, height], i) => Object.assign(document.createElement("img"), {
+    src, alt: t(`${id}.alt${i + 1}`), width: 1280, height, loading: "lazy"
+  })));
+  shots.hidden = p.shots.length === 0;
+
+  const hood = document.getElementById("sheet-hood");
+  hood.replaceChildren(...Array.from({ length: p.hood }, (_, i) => li(t(`${id}.h${i + 1}`))));
+  hood.hidden = document.getElementById("hood-title").hidden = p.hood === 0;
+
+  const demo = document.getElementById("sheet-demo");
+  demo.hidden = !p.demo;
+  if (p.demo) { demo.href = p.demo; demo.textContent = t("link.demo"); }
+
   if (p.link) {
     link.href = p.link;
     link.textContent = t("link.github");
