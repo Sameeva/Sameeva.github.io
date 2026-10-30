@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Houssam Djerir, web developer</title>
+<meta name="description" content="Web applications and databases for Algerian businesses.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="brand" href="#top">Houssam Djerir</a>
+  <nav class="links" aria-label="Sections">
+    <a href="#projects" data-i18n="nav.projects"></a>
+    <a href="#services" data-i18n="nav.services"></a>
+    <a href="#contact" data-i18n="nav.contact"></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" lang="en">EN</button>
+    <button type="button" data-lang="fr" lang="fr">FR</button>
+    <button type="button" data-lang="ar" lang="ar">عربي</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p class="who" data-i18n="hero.who"></p>
+    <h1 data-i18n="hero.title"></h1>
+    <p class="lede" data-i18n="hero.lede"></p>
+    <div class="actions">
+      <a class="btn primary" href="#projects" data-i18n="hero.cta1"></a>
+      <a class="btn" href="#contact" data-i18n="hero.cta2"></a>
+    </div>
+  </section>
+
+  <section id="projects" class="block">
+    <h2 data-i18n="projects.title"></h2>
+    <div class="tiles">
+      <button type="button" class="tile t-fatura" data-project="fatura" aria-haspopup="dialog">
+        <span class="status dev" data-i18n="status.dev"></span>
+        <span class="tname">FaturaDZ</span>
+        <span class="ttag" data-i18n="fatura.tag"></span>
+      </button>
+      <button type="button" class="tile t-order" data-project="order" aria-haspopup="dialog">
+        <span class="status dev" data-i18n="status.dev"></span>
+        <span class="tname">OrderDZ</span>
+        <span class="ttag" data-i18n="order.tag"></span>
+      </button>
+      <button type="button" class="tile t-menu" data-project="menu" aria-haspopup="dialog">
+        <span class="status soon" data-i18n="status.soon"></span>
+        <span class="tname">MenuDZ</span>
+        <span class="ttag" data-i18n="menu.tag"></span>
+      </button>
+    </div>
+  </section>
+
+  <section id="services" class="block">
+    <h2 data-i18n="services.title"></h2>
+    <ul class="rows">
+      <li><h3 data-i18n="s1.title"></h3><p data-i18n="s1.desc"></p></li>
+      <li><h3 data-i18n="s2.title"></h3><p data-i18n="s2.desc"></p></li>
+      <li><h3 data-i18n="s3.title"></h3><p data-i18n="s3.desc"></p></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2 data-i18n="tools.title"></h2>
+    <ul class="chips" dir="ltr">
+      <li>Next.js</li><li>TypeScript</li><li>Prisma</li><li>PostgreSQL</li>
+      <li>Oracle</li><li>SQL</li><li>Python</li><li>Delphi</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="block contact">
+    <h2 data-i18n="contact.title"></h2>
+    <p data-i18n="contact.body"></p>
+    <a class="btn primary" href="https://github.com/Sameeva" target="_blank" rel="noopener" data-i18n="contact.cta"></a>
+  </section>
+</main>
+
+<footer class="foot" data-i18n="foot"></footer>
+
+<div class="scrim" id="scrim"></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" inert>
+  <div class="grab" id="grab"><span></span></div>
+  <div class="sheet-body">
+    <span class="status" id="sheet-status"></span>
+    <h3 id="sheet-title"></h3>
+    <p class="sheet-desc" id="sheet-desc"></p>
+    <ul class="points" id="sheet-points"></ul>
+    <div class="sheet-actions">
+      <a class="btn primary" id="sheet-link" target="_blank" rel="noopener"></a>
+      <button type="button" class="btn" id="sheet-close" data-i18n="close"></button>
+    </div>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
