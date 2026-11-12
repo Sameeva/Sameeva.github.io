@@ -4,7 +4,7 @@ const T = {
   en: {
     "nav.projects": "Projects", "nav.services": "Services", "nav.contact": "Contact",
     "hero.who": "Houssam Djerir, web developer",
-    "hero.title": "I build web apps and AI solutions for people and businesses.",
+    "hero.title": "I build web apps and AI solutions .",
     "hero.lede": "From idea to a working product. Simple, fast, and built around what you actually need.",
     "hero.cta1": "View projects", "hero.cta2": "Contact me",
     "projects.title": "Projects",
