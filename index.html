@@ -9,15 +9,27 @@
 <title>Houssam Djerir, web developer</title>
 <meta name="description" content="Web apps and AI solutions for people and businesses.">
 <link rel="stylesheet" href="styles.css">
+<script>
+/* French/Arabic visitors: set language and direction and hold first paint until app.js has translated the page (2s safety timeout) */
+(function () {
+  try {
+    var l = localStorage.getItem("lang") || (navigator.language || "en").slice(0, 2), d = document.documentElement;
+    if (l === "fr" || l === "ar") {
+      d.lang = l; d.dir = l === "ar" ? "rtl" : "ltr"; d.classList.add("i18n-pending");
+      setTimeout(function () { d.classList.remove("i18n-pending"); }, 2000);
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 
 <header class="bar">
   <a class="brand" href="#top">Houssam Djerir</a>
   <nav class="links" aria-label="Sections">
-    <a href="#projects" data-i18n="nav.projects"></a>
-    <a href="#services" data-i18n="nav.services"></a>
-    <a href="#contact" data-i18n="nav.contact"></a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="en" lang="en">EN</button>
@@ -28,66 +40,66 @@
 
 <main id="top">
   <section class="hero">
-    <p class="who" data-i18n="hero.who"></p>
-    <h1 data-i18n="hero.title"></h1>
-    <p class="lede" data-i18n="hero.lede"></p>
+    <p class="who" data-i18n="hero.who">Houssam Djerir, web developer</p>
+    <h1 data-i18n="hero.title">I build web apps and AI solutions .</h1>
+    <p class="lede" data-i18n="hero.lede">From idea to a working product. Simple, fast, and built around what you actually need.</p>
     <div class="actions">
-      <a class="btn primary" href="#projects" data-i18n="hero.cta1"></a>
-      <a class="btn" href="#contact" data-i18n="hero.cta2"></a>
+      <a class="btn primary" href="#projects" data-i18n="hero.cta1">View projects</a>
+      <a class="btn" href="#contact" data-i18n="hero.cta2">Contact me</a>
     </div>
   </section>
 
   <section id="projects" class="block">
-    <h2 data-i18n="projects.title"></h2>
+    <h2 data-i18n="projects.title">Projects</h2>
     <div class="tiles">
       <button type="button" class="tile t-fatura" data-project="fatura" aria-haspopup="dialog">
-        <span class="status dev" data-i18n="status.dev"></span>
+        <span class="status dev" data-i18n="status.dev">In development</span>
         <span class="tname">FaturaDZ</span>
-        <span class="ttag" data-i18n="fatura.tag"></span>
+        <span class="ttag" data-i18n="fatura.tag">Invoices and receipts, ready to download as PDF.</span>
       </button>
       <button type="button" class="tile t-order" data-project="order" aria-haspopup="dialog">
-        <span class="status dev" data-i18n="status.dev"></span>
+        <span class="status dev" data-i18n="status.dev">In development</span>
         <span class="tname">OrderDZ</span>
-        <span class="ttag" data-i18n="order.tag"></span>
+        <span class="ttag" data-i18n="order.tag">Orders for cash-on-delivery sellers.</span>
       </button>
       <button type="button" class="tile t-menu" data-project="menu" aria-haspopup="dialog">
-        <span class="status soon" data-i18n="status.soon"></span>
+        <span class="status soon" data-i18n="status.soon">Incoming</span>
         <span class="tname">MenuDZ</span>
-        <span class="ttag" data-i18n="menu.tag"></span>
+        <span class="ttag" data-i18n="menu.tag">QR menus for cafés and restaurants.</span>
       </button>
       <button type="button" class="tile t-cbot" data-project="cbot" aria-haspopup="dialog">
-        <span class="status live" data-i18n="status.live"></span>
+        <span class="status live" data-i18n="status.live">Live</span>
         <span class="tname">Contact bot</span>
-        <span class="ttag" data-i18n="cbot.tag"></span>
+        <span class="ttag" data-i18n="cbot.tag">A Telegram bot that qualifies visitors and forwards leads.</span>
       </button>
     </div>
   </section>
 
   <section id="services" class="block">
-    <h2 data-i18n="services.title"></h2>
+    <h2 data-i18n="services.title">What I build</h2>
     <ul class="rows">
-      <li><h3 data-i18n="s1.title"></h3><p data-i18n="s1.desc"></p></li>
-      <li><h3 data-i18n="s2.title"></h3><p data-i18n="s2.desc"></p></li>
-      <li><h3 data-i18n="s3.title"></h3><p data-i18n="s3.desc"></p></li>
+      <li><h3 data-i18n="s1.title">Web applications</h3><p data-i18n="s1.desc">Dashboards, invoicing tools and ordering systems, built with Next.js and TypeScript.</p></li>
+      <li><h3 data-i18n="s2.title">AI solutions</h3><p data-i18n="s2.desc">Chatbots, assistants and automations built on language models, wired into the tools you already use.</p></li>
+      <li><h3 data-i18n="s3.title">Databases</h3><p data-i18n="s3.desc">Schema design, SQL queries and performance tuning.</p></li>
     </ul>
   </section>
 
   <section class="block">
-    <h2 data-i18n="process.title"></h2>
+    <h2 data-i18n="process.title">How we work together</h2>
     <ol class="rows steps">
-      <li><h3 data-i18n="p1.t"></h3><p data-i18n="p1.d"></p></li>
-      <li><h3 data-i18n="p2.t"></h3><p data-i18n="p2.d"></p></li>
-      <li><h3 data-i18n="p3.t"></h3><p data-i18n="p3.d"></p></li>
+      <li><h3 data-i18n="p1.t">Brief</h3><p data-i18n="p1.d">You describe what you need. I reply with questions, a clear scope and a price.</p></li>
+      <li><h3 data-i18n="p2.t">Build</h3><p data-i18n="p2.d">I build in small steps and show progress along the way, so nothing comes as a surprise.</p></li>
+      <li><h3 data-i18n="p3.t">Deliver</h3><p data-i18n="p3.d">You get the working product and a short handover so you can use it right away.</p></li>
     </ol>
   </section>
 
   <section id="about" class="block about">
-    <h2 data-i18n="about.title"></h2>
-    <p data-i18n="about.body"></p>
+    <h2 data-i18n="about.title">About</h2>
+    <p data-i18n="about.body">I'm Houssam, a developer with a background in databases. I build web products from start to finish, and I care about the parts people don't see: correct numbers, clean data and fast pages. You work with me directly, from your first message to the final delivery.</p>
   </section>
 
   <section class="block">
-    <h2 data-i18n="tools.title"></h2>
+    <h2 data-i18n="tools.title">Tools</h2>
     <ul class="chips" dir="ltr">
       <li>Next.js</li><li>TypeScript</li><li>Prisma</li><li>PostgreSQL</li>
       <li>Oracle</li><li>SQL</li><li>Python</li><li>LLM APIs</li>
@@ -95,16 +107,16 @@
   </section>
 
   <section id="contact" class="block contact">
-    <h2 data-i18n="contact.title"></h2>
-    <p data-i18n="contact.body"></p>
+    <h2 data-i18n="contact.title">Have a project in mind?</h2>
+    <p data-i18n="contact.body">Message me on Telegram and tell me what you need.</p>
     <div class="actions">
-      <a class="btn primary" href="https://t.me/eevva_bot" target="_blank" rel="noopener" data-i18n="contact.tg"></a>
-      <a class="btn" href="https://github.com/Sameeva" target="_blank" rel="noopener" data-i18n="contact.cta"></a>
+      <a class="btn primary" href="https://t.me/eevva_bot" target="_blank" rel="noopener" data-i18n="contact.tg">Message me on Telegram</a>
+      <a class="btn" href="https://github.com/Sameeva" target="_blank" rel="noopener" data-i18n="contact.cta">Go to my GitHub profile</a>
     </div>
   </section>
 </main>
 
-<footer class="foot" data-i18n="foot"></footer>
+<footer class="foot" data-i18n="foot">© 2026 Houssam Djerir</footer>
 
 <div class="scrim" id="scrim"></div>
 <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" inert>
@@ -115,12 +127,12 @@
     <div class="shots" id="sheet-shots" hidden></div>
     <p class="sheet-desc" id="sheet-desc"></p>
     <ul class="points" id="sheet-points"></ul>
-    <h4 id="hood-title" data-i18n="hood.title" hidden></h4>
+    <h4 id="hood-title" data-i18n="hood.title" hidden>Under the hood</h4>
     <ul class="points" id="sheet-hood" hidden></ul>
     <div class="sheet-actions">
       <a class="btn primary" id="sheet-demo" target="_blank" rel="noopener" hidden></a>
       <a class="btn" id="sheet-link" target="_blank" rel="noopener"></a>
-      <button type="button" class="btn" id="sheet-close" data-i18n="close"></button>
+      <button type="button" class="btn" id="sheet-close" data-i18n="close">Close</button>
     </div>
   </div>
 </section>

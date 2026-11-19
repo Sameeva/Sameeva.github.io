@@ -203,7 +203,10 @@ h3 { font-size: 1.15rem; letter-spacing: -.01em; }
 
 .shots { display: flex; gap: 12px; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; align-items: flex-start; }
 .shots[hidden], .points[hidden], #hood-title[hidden], .btn[hidden] { display: none; }
-.shots img { flex: 0 0 86%; width: 86%; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px var(--line); scroll-snap-align: start; background: #fff; }
+.shots a { flex: 0 0 92%; display: block; scroll-snap-align: start; border-radius: 16px; }
+.shots img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px var(--line); background: #fff; }
+/* non-English visitors: hold the first paint until the translation is applied (set by the inline script in <head>) */
+.i18n-pending body { visibility: hidden; }
 #hood-title { margin-top: 10px; font-size: 1.1rem; letter-spacing: -.01em; }
 
 .steps { list-style: none; counter-reset: step; padding: 0; }
