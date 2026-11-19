@@ -2,7 +2,7 @@
 
 const T = {
   en: {
-    "nav.projects": "Projects", "nav.services": "Services", "nav.contact": "Contact",
+    "nav.projects": "Projects", "nav.services": "Services", "nav.contact": "Contact", "lang.label": "Language",
     "hero.who": "Houssam Djerir, web developer",
     "hero.title": "I build web apps and AI solutions .",
     "hero.lede": "From idea to a working product. Simple, fast, and built around what you actually need.",
@@ -66,7 +66,7 @@ const T = {
     "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, web developer"
   },
   fr: {
-    "nav.projects": "Projets", "nav.services": "Services", "nav.contact": "Contact",
+    "nav.projects": "Projets", "nav.services": "Services", "nav.contact": "Contact", "lang.label": "Langue",
     "hero.who": "Houssam Djerir, développeur web",
     "hero.title": "Je crée des applications web et des solutions d'IA pour les particuliers et les entreprises.",
     "hero.lede": "De l'idée au produit qui fonctionne. Simple, rapide et pensé pour ce dont vous avez vraiment besoin.",
@@ -130,7 +130,7 @@ const T = {
     "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, développeur web"
   },
   ar: {
-    "nav.projects": "المشاريع", "nav.services": "الخدمات", "nav.contact": "تواصل",
+    "nav.projects": "المشاريع", "nav.services": "الخدمات", "nav.contact": "تواصل", "lang.label": "اللغة",
     "hero.who": "حسام جرير، مطوّر ويب",
     "hero.title": "أبني تطبيقات ويب وحلول ذكاء اصطناعي للأفراد والشركات.",
     "hero.lede": "من الفكرة إلى منتج يعمل. بسيط وسريع ومصمم وفق ما تحتاجه فعلاً.",
@@ -222,7 +222,7 @@ function applyLang(next) {
   root.dir = lang === "ar" ? "rtl" : "ltr";
   document.title = t("title");
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
-  document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  renderLangMenu();
   if (openProject) fillSheet(openProject);
   store.set(lang);
   root.classList.remove("i18n-pending");
@@ -350,5 +350,37 @@ function endDrag(e) {
 grab.addEventListener("pointerup", endDrag);
 grab.addEventListener("pointercancel", endDrag);
 
-document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+/* language switcher: a button showing the current language, and a list of the others */
+const LANGS = { en: ["EN", "English"], fr: ["FR", "Français"], ar: ["عربي", "العربية"] };
+const langBox = document.getElementById("lang");
+const langBtn = document.getElementById("lang-btn");
+const langMenu = document.getElementById("lang-menu");
+
+function renderLangMenu() {
+  const cur = document.getElementById("lang-cur");
+  cur.textContent = LANGS[lang][0];
+  cur.lang = lang;
+  langBtn.setAttribute("aria-label", `${t("lang.label")}: ${LANGS[lang][1]}`);
+  langMenu.replaceChildren(...Object.keys(LANGS).filter((k) => k !== lang).map((k) => {
+    const b = Object.assign(document.createElement("button"), { type: "button", lang: k, textContent: LANGS[k][1] });
+    b.dataset.lang = k;
+    return b;
+  }));
+}
+function setLangMenu(open, refocus) {
+  langMenu.hidden = !open;
+  langBtn.setAttribute("aria-expanded", String(open));
+  if (!open && refocus) langBtn.focus({ preventScroll: true });
+}
+langBtn.addEventListener("click", () => setLangMenu(langMenu.hidden));
+langMenu.addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-lang]");
+  if (!b) return;
+  applyLang(b.dataset.lang);
+  setLangMenu(false, true);
+});
+document.addEventListener("click", (e) => { if (!langMenu.hidden && !langBox.contains(e.target)) setLangMenu(false); });
+document.addEventListener("focusin", (e) => { if (!langMenu.hidden && !langBox.contains(e.target)) setLangMenu(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !langMenu.hidden) setLangMenu(false, true); });
+
 applyLang(detectLang());

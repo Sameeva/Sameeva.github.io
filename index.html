@@ -31,10 +31,9 @@
     <a href="#services" data-i18n="nav.services">Services</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
-  <div class="lang" role="group" aria-label="Language">
-    <button type="button" data-lang="en" lang="en">EN</button>
-    <button type="button" data-lang="fr" lang="fr">FR</button>
-    <button type="button" data-lang="ar" lang="ar">عربي</button>
+  <div class="lang" id="lang">
+    <button type="button" class="lang-btn" id="lang-btn" aria-expanded="false" aria-controls="lang-menu" aria-label="Language: English"><span id="lang-cur">EN</span></button>
+    <div class="lang-menu" id="lang-menu" hidden></div>
   </div>
 </header>
 
