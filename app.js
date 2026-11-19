@@ -42,9 +42,9 @@ const T = {
     "p3.d": "You get the working product and a short handover so you can use it right away.",
     "hood.title": "Under the hood",
     "link.demo": "Try the live demo", "link.bot": "Try the bot",
-    "fatura.alt1": "FaturaDZ documents list with a draft and finalized invoices",
-    "fatura.alt2": "A finalized invoice with line items, VAT per rate and totals",
-    "fatura.alt3": "The invoice editor",
+    "fatura.alt1": "FaturaDZ documents list: a draft and two numbered invoices, with search and filter. Opens the full screenshot.",
+    "fatura.alt2": "Totals of a finalized invoice: total before tax, VAT split by rate, stamp duty and the net amount to pay. Opens the full screenshot.",
+    "fatura.alt3": "The invoice editor's client card, with the tax identifiers (NIF, RC, article) a legal invoice needs. Opens the full screenshot.",
     "fatura.h1": "All money is stored as whole cents and rounded once per tax rate, so totals always add up.",
     "fatura.h2": "Numbering is sequential per document type and year, assigned in a single transaction when a document is finalized.",
     "fatura.h3": "Everything runs in the browser: data stays in IndexedDB on the user's device, with validated JSON backup and restore.",
@@ -106,9 +106,9 @@ const T = {
     "p3.d": "Vous recevez le produit fonctionnel et une courte prise en main pour l'utiliser tout de suite.",
     "hood.title": "Sous le capot",
     "link.demo": "Essayer la démo en ligne", "link.bot": "Essayer le bot",
-    "fatura.alt1": "Liste des documents FaturaDZ avec un brouillon et des factures finalisées",
-    "fatura.alt2": "Une facture finalisée avec ses lignes, la TVA par taux et les totaux",
-    "fatura.alt3": "L'éditeur de facture",
+    "fatura.alt1": "Liste des documents FaturaDZ : un brouillon et deux factures numérotées, avec recherche et filtre. Ouvre la capture complète.",
+    "fatura.alt2": "Totaux d'une facture finalisée : total HT, TVA par taux, droit de timbre et net à payer. Ouvre la capture complète.",
+    "fatura.alt3": "La fiche client de l'éditeur de facture, avec les identifiants fiscaux (NIF, RC, article) requis. Ouvre la capture complète.",
     "fatura.h1": "Les montants sont stockés en centimes entiers et arrondis une seule fois par taux de TVA, donc les totaux sont toujours justes.",
     "fatura.h2": "La numérotation est séquentielle par type de document et par année, attribuée en une seule transaction à la finalisation.",
     "fatura.h3": "Tout fonctionne dans le navigateur : les données restent dans IndexedDB sur l'appareil, avec sauvegarde et restauration JSON validées.",
@@ -170,9 +170,9 @@ const T = {
     "p3.d": "تستلم المنتج جاهزًا مع شرح مختصر لتستعمله فورًا.",
     "hood.title": "خلف الكواليس",
     "link.demo": "جرّب النسخة التجريبية", "link.bot": "جرّب البوت",
-    "fatura.alt1": "قائمة مستندات FaturaDZ مع مسودة وفواتير نهائية",
-    "fatura.alt2": "فاتورة نهائية مع البنود والضريبة لكل نسبة والمجاميع",
-    "fatura.alt3": "محرر الفواتير",
+    "fatura.alt1": "قائمة مستندات FaturaDZ: مسودة وفاتورتان مرقّمتان مع بحث وتصفية. تفتح لقطة الشاشة الكاملة.",
+    "fatura.alt2": "مجاميع فاتورة نهائية: المجموع قبل الضريبة والضريبة لكل نسبة ورسم الطابع والصافي المستحق. تفتح لقطة الشاشة الكاملة.",
+    "fatura.alt3": "بطاقة العميل في محرر الفواتير مع المعرّفات الضريبية (NIF وRC والمادة) المطلوبة. تفتح لقطة الشاشة الكاملة.",
     "fatura.h1": "تُخزَّن المبالغ كأعداد صحيحة من السنتيمات وتُقرَّب مرة واحدة لكل نسبة ضريبة، فتتطابق المجاميع دائمًا.",
     "fatura.h2": "الترقيم متسلسل لكل نوع مستند وكل سنة، ويُمنح في معاملة واحدة عند الإنهاء.",
     "fatura.h3": "كل شيء يعمل داخل المتصفح: تبقى البيانات في IndexedDB على جهاز المستخدم، مع نسخ احتياطي واستعادة بصيغة JSON يتم التحقق منها.",
@@ -197,7 +197,9 @@ const T = {
 
 const PROJECTS = {
   fatura: { link: "https://github.com/Sameeva/FaturaDZ", demo: "https://fatura-dz.vercel.app", status: "dev",
-            shots: [["img/fatura-list.png", 410], ["img/fatura-invoice.png", 650], ["img/fatura-editor.png", 702]], hood: 4 },
+            shots: [["img/fatura-list-crop.png", "img/fatura-list.png", 520, 326],
+                    ["img/fatura-invoice-crop.png", "img/fatura-invoice.png", 500, 210],
+                    ["img/fatura-editor-crop.png", "img/fatura-editor.png", 552, 389]], hood: 4 },
   order:  { link: "https://github.com/Sameeva/OrderDZ", demo: null, status: "dev", shots: [], hood: 4 },
   menu:   { link: null, demo: null, status: "soon", shots: [], hood: 0 },
   cbot:   { link: "https://github.com/Sameeva/contact-bot", demo: "https://t.me/eevva_bot", demoLabel: "link.bot", status: "live", shots: [], hood: 4 }
@@ -223,6 +225,7 @@ function applyLang(next) {
   document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   if (openProject) fillSheet(openProject);
   store.set(lang);
+  root.classList.remove("i18n-pending");
 }
 
 function detectLang() {
@@ -251,9 +254,12 @@ function fillSheet(id) {
   document.getElementById("sheet-points").replaceChildren(...[1, 2, 3].map((n) => li(t(`${id}.b${n}`))));
 
   const shots = document.getElementById("sheet-shots");
-  shots.replaceChildren(...p.shots.map(([src, height], i) => Object.assign(document.createElement("img"), {
-    src, alt: t(`${id}.alt${i + 1}`), width: 1280, height, loading: "lazy"
-  })));
+  shots.replaceChildren(...p.shots.map(([src, full, width, height], i) => {
+    const img = Object.assign(document.createElement("img"), { src, alt: t(`${id}.alt${i + 1}`), width, height, loading: "lazy" });
+    const a = Object.assign(document.createElement("a"), { href: full, target: "_blank", rel: "noopener" });
+    a.append(img);
+    return a;
+  }));
   shots.hidden = p.shots.length === 0;
 
   const hood = document.getElementById("sheet-hood");
