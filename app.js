@@ -4,7 +4,7 @@ const T = {
   en: {
     "nav.projects": "Projects", "nav.services": "Services", "nav.contact": "Contact", "lang.label": "Language",
     "hero.who": "Houssam Djerir, web developer",
-    "hero.title": "I build web apps and AI solutions .",
+    "hero.title": "I build web apps and AI solutions.",
     "hero.lede": "From idea to a working product. Simple, fast, and built around what you actually need.",
     "hero.cta1": "View projects", "hero.cta2": "Contact me",
     "projects.title": "Projects",
@@ -68,7 +68,7 @@ const T = {
   fr: {
     "nav.projects": "Projets", "nav.services": "Services", "nav.contact": "Contact", "lang.label": "Langue",
     "hero.who": "Houssam Djerir, développeur web",
-    "hero.title": "Je crée des applications web et des solutions d'IA pour les particuliers et les entreprises.",
+    "hero.title": "Je crée des applications web et des solutions d'IA.",
     "hero.lede": "De l'idée au produit qui fonctionne. Simple, rapide et pensé pour ce dont vous avez vraiment besoin.",
     "hero.cta1": "Voir les projets", "hero.cta2": "Me contacter",
     "projects.title": "Projets",
@@ -132,7 +132,7 @@ const T = {
   ar: {
     "nav.projects": "المشاريع", "nav.services": "الخدمات", "nav.contact": "تواصل", "lang.label": "اللغة",
     "hero.who": "حسام جرير، مطوّر ويب",
-    "hero.title": "أبني تطبيقات ويب وحلول ذكاء اصطناعي للأفراد والشركات.",
+    "hero.title": "أبني تطبيقات ويب وحلول ذكاء اصطناعي.",
     "hero.lede": "من الفكرة إلى منتج يعمل. بسيط وسريع ومصمم وفق ما تحتاجه فعلاً.",
     "hero.cta1": "عرض المشاريع", "hero.cta2": "تواصل معي",
     "projects.title": "المشاريع",
