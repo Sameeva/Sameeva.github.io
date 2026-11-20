@@ -8,7 +8,7 @@ const T = {
     "hero.lede": "From idea to a working product. Simple, fast, and built around what you actually need.",
     "hero.cta1": "View projects", "hero.cta2": "Contact me",
     "projects.title": "Projects",
-    "status.dev": "In development", "status.soon": "Incoming",
+    "status.dev": "In development", "status.soon": "Coming soon",
     "fatura.tag": "Invoices and receipts, ready to download as PDF.",
     "fatura.desc": "A clean invoice and receipt maker. It fills in the required legal and tax details so you can download a proper PDF without wrestling with Excel or Word templates.",
     "fatura.b1": "Legal and tax details filled in for you",
@@ -63,7 +63,8 @@ const T = {
     "cbot.h2": "A secret header check rejects any request that doesn't come from Telegram, and only the owner can relay replies.",
     "cbot.h3": "Visitor names are escaped before they reach the owner, and long messages are truncated.",
     "cbot.h4": "Unit tests cover the flow, the FAQ matching and the abuse cases, and the code runs as a single serverless function.",
-    "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, web developer"
+    "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, web developer",
+    "meta.desc": "Houssam Djerir, web developer. I build web apps and AI solutions: invoicing, order management and Telegram bots."
   },
   fr: {
     "nav.projects": "Projets", "nav.services": "Services", "nav.contact": "Contact", "lang.label": "Langue",
@@ -94,7 +95,7 @@ const T = {
     "s2.title": "Solutions d'IA", "s2.desc": "Chatbots, assistants et automatisations basés sur des modèles de langage, intégrés aux outils que vous utilisez déjà.",
     "s3.title": "Bases de données", "s3.desc": "Conception de schémas, requêtes SQL et optimisation des performances.",
     "tools.title": "Outils",
-    "contact.title": "Un projet en tête ?", "contact.body": "Écrivez-moi sur Telegram et dites-moi ce dont vous avez besoin.", "contact.tg": "Me écrire sur Telegram", "contact.cta": "Voir mon profil GitHub",
+    "contact.title": "Un projet en tête ?", "contact.body": "Écrivez-moi sur Telegram et dites-moi ce dont vous avez besoin.", "contact.tg": "M'écrire sur Telegram", "contact.cta": "Voir mon profil GitHub",
     "about.title": "À propos",
     "about.body": "Je suis Houssam, développeur avec une formation en bases de données. Je construis des produits web de bout en bout, et je soigne ce que les gens ne voient pas : des montants justes, des données propres et des pages rapides. Vous travaillez directement avec moi, de votre premier message à la livraison finale.",
     "process.title": "Comment on travaille ensemble",
@@ -127,7 +128,8 @@ const T = {
     "cbot.h2": "Un en-tête secret rejette toute requête qui ne vient pas de Telegram, et seul le propriétaire peut relayer des réponses.",
     "cbot.h3": "Les noms des visiteurs sont échappés avant d'arriver au propriétaire, et les messages trop longs sont tronqués.",
     "cbot.h4": "Des tests unitaires couvrent le parcours, la correspondance de la FAQ et les cas d'abus, et le code tourne comme une seule fonction serverless.",
-    "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, développeur web"
+    "foot": "© 2026 Houssam Djerir", "title": "Houssam Djerir, développeur web",
+    "meta.desc": "Houssam Djerir, développeur web. Je crée des applications web et des solutions d'IA : facturation, gestion de commandes et bots Telegram."
   },
   ar: {
     "nav.projects": "المشاريع", "nav.services": "الخدمات", "nav.contact": "تواصل", "lang.label": "اللغة",
@@ -191,7 +193,8 @@ const T = {
     "cbot.h2": "ترويسة سرية ترفض أي طلب لا يأتي من تيليغرام، ولا يستطيع تمرير الردود سوى المالك.",
     "cbot.h3": "تُنقّى أسماء الزوار قبل وصولها إلى المالك، وتُقتطع الرسائل الطويلة.",
     "cbot.h4": "اختبارات وحدات تغطي المسار ومطابقة الأسئلة الشائعة وحالات إساءة الاستخدام، ويعمل الكود كدالة واحدة بلا خادم.",
-    "foot": "© 2026 حسام جرير", "title": "حسام جرير، مطوّر ويب"
+    "foot": "© 2026 حسام جرير", "title": "حسام جرير، مطوّر ويب",
+    "meta.desc": "حسام جرير، مطوّر ويب. أبني تطبيقات ويب وحلول ذكاء اصطناعي: فوترة وإدارة طلبات وبوتات تيليغرام."
   }
 };
 
@@ -210,30 +213,25 @@ let lang = "en";
 let openProject = null;
 let lastTile = null;
 
-const store = {
-  get() { try { return localStorage.getItem("lang"); } catch { return null; } },
-  set(v) { try { localStorage.setItem("lang", v); } catch { /* storage unavailable */ } }
-};
+const saveLang = (v) => { try { localStorage.setItem("lang", v); } catch { /* storage unavailable */ } };
 const t = (k) => T[lang][k] ?? T.en[k] ?? k;
 
-function applyLang(next) {
+function applyLang(next, persist = false) {
   lang = T[next] ? next : "en";
   root.lang = lang;
   root.dir = lang === "ar" ? "rtl" : "ltr";
   document.title = t("title");
+  document.querySelector('meta[name="description"]').content = t("meta.desc");
   document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
   renderLangMenu();
   if (openProject) fillSheet(openProject);
-  store.set(lang);
+  if (persist) saveLang(lang);   // only remember a language the visitor chose, not one we guessed
   root.classList.remove("i18n-pending");
 }
 
-function detectLang() {
-  const saved = store.get();
-  if (saved && T[saved]) return saved;
-  const nav = (navigator.language || "en").slice(0, 2);
-  return T[nav] ? nav : "en";
-}
+/* The inline script in <head> already chose the starting language (saved choice, else browser language)
+   and set <html lang>, so that is the single source of truth here. */
+const detectLang = () => (T[root.lang] ? root.lang : "en");
 
 /* bottom sheet */
 const sheet = document.getElementById("sheet");
@@ -268,7 +266,7 @@ function fillSheet(id) {
 
   const demo = document.getElementById("sheet-demo");
   demo.hidden = !p.demo;
-  if (p.demo) { demo.href = p.demo; demo.textContent = t(p.demoLabel ?? "link.demo"); }
+  if (p.demo) { demo.href = p.demo; demo.textContent = t(p.demoLabel ?? "link.demo"); } else demo.removeAttribute("href");
 
   if (p.link) {
     link.href = p.link;
@@ -283,12 +281,16 @@ function fillSheet(id) {
   }
 }
 
+const pageBehind = document.querySelectorAll("body > header, body > main, body > footer");
+const setPageInert = (on) => pageBehind.forEach((el) => { el.inert = on; });
+
 function openSheet(id, tile) {
   openProject = id;
   lastTile = tile;
   fillSheet(id);
   sheet.style.transform = "";
   sheet.removeAttribute("inert");
+  setPageInert(true);
   scrim.classList.add("open");
   root.classList.add("locked");
   requestAnimationFrame(() => {
@@ -305,6 +307,7 @@ function closeSheet() {
   scrim.classList.remove("open");
   root.classList.remove("locked");
   sheet.setAttribute("inert", "");
+  setPageInert(false);
   if (lastTile) lastTile.focus({ preventScroll: true });
 }
 
@@ -317,7 +320,8 @@ document.addEventListener("keydown", (e) => {
   if (!openProject) return;
   if (e.key === "Escape") { closeSheet(); return; }
   if (e.key !== "Tab") return;
-  const items = [...sheet.querySelectorAll("a[href], button")].filter((el) => el.getAttribute("aria-disabled") !== "true");
+  const items = [...sheet.querySelectorAll("a[href], button")].filter((el) => el.getAttribute("aria-disabled") !== "true" && el.offsetParent !== null);
+  if (!items.length) return;
   const first = items[0], last = items[items.length - 1];
   if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
@@ -376,7 +380,7 @@ langBtn.addEventListener("click", () => setLangMenu(langMenu.hidden));
 langMenu.addEventListener("click", (e) => {
   const b = e.target.closest("button[data-lang]");
   if (!b) return;
-  applyLang(b.dataset.lang);
+  applyLang(b.dataset.lang, true);
   setLangMenu(false, true);
 });
 document.addEventListener("click", (e) => { if (!langMenu.hidden && !langBox.contains(e.target)) setLangMenu(false); });

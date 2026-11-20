@@ -2,23 +2,44 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-NI6D3lL4129mgEMjG/8xefvn+CvLBAVRfrraN2aFwPs='; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>Houssam Djerir, web developer</title>
-<meta name="description" content="Web apps and AI solutions for people and businesses.">
-<link rel="stylesheet" href="styles.css?v=626d5d8f">
+<meta name="description" content="Houssam Djerir, web developer. I build web apps and AI solutions: invoicing, order management and Telegram bots.">
+<link rel="canonical" href="https://sameeva.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Houssam Djerir">
+<meta property="og:url" content="https://sameeva.github.io/">
+<meta property="og:title" content="Houssam Djerir, web developer">
+<meta property="og:description" content="Houssam Djerir, web developer. I build web apps and AI solutions: invoicing, order management and Telegram bots.">
+<meta property="og:image" content="https://sameeva.github.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Houssam Djerir, web developer: I build web apps and AI solutions.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Houssam Djerir, web developer">
+<meta name="twitter:description" content="Houssam Djerir, web developer. I build web apps and AI solutions: invoicing, order management and Telegram bots.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Houssam Djerir","jobTitle":"Web developer","url":"https://sameeva.github.io/","sameAs":["https://github.com/Sameeva"]}</script>
+<link rel="stylesheet" href="styles.css?v=172028e0">
 <script>
-/* French/Arabic visitors: set language and direction and hold first paint until app.js has translated the page (2s safety timeout) */
+/* Pick the language before first paint: a saved choice, else the browser language. app.js reads <html lang> as the single source of truth.
+   French/Arabic visitors: hold the first paint until app.js has translated the page (2s safety timeout). */
 (function () {
-  try {
-    var l = localStorage.getItem("lang") || (navigator.language || "en").slice(0, 2), d = document.documentElement;
-    if (l === "fr" || l === "ar") {
-      d.lang = l; d.dir = l === "ar" ? "rtl" : "ltr"; d.classList.add("i18n-pending");
-      setTimeout(function () { d.classList.remove("i18n-pending"); }, 2000);
-    }
-  } catch (e) {}
+  var d = document.documentElement, l;
+  try { l = localStorage.getItem("lang"); } catch (e) {}
+  l = l || (navigator.language || "en").slice(0, 2);
+  if (l !== "fr" && l !== "ar") l = "en";
+  d.lang = l; d.dir = l === "ar" ? "rtl" : "ltr";
+  if (l !== "en") {
+    d.classList.add("i18n-pending");
+    setTimeout(function () { d.classList.remove("i18n-pending"); }, 2000);
+  }
 })();
 </script>
 </head>
@@ -62,7 +83,7 @@
         <span class="ttag" data-i18n="order.tag">Orders for cash-on-delivery sellers.</span>
       </button>
       <button type="button" class="tile t-menu" data-project="menu" aria-haspopup="dialog">
-        <span class="status soon" data-i18n="status.soon">Incoming</span>
+        <span class="status soon" data-i18n="status.soon">Coming soon</span>
         <span class="tname">MenuDZ</span>
         <span class="ttag" data-i18n="menu.tag">QR menus for cafés and restaurants.</span>
       </button>
@@ -136,6 +157,6 @@
   </div>
 </section>
 
-<script src="app.js?v=c8eed3e2"></script>
+<script src="app.js?v=333f24d9"></script>
 </body>
 </html>
