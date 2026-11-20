@@ -8,7 +8,7 @@ const T = {
     "hero.lede": "From idea to a working product. Simple, fast, and built around what you actually need.",
     "hero.cta1": "View projects", "hero.cta2": "Contact me",
     "projects.title": "Projects",
-    "status.dev": "In development", "status.soon": "Coming soon",
+    "status.dev": "In development", "status.demo": "Live demo", "status.soon": "Coming soon",
     "fatura.tag": "Invoices and receipts, ready to download as PDF.",
     "fatura.desc": "A clean invoice and receipt maker. It fills in the required legal and tax details so you can download a proper PDF without wrestling with Excel or Word templates.",
     "fatura.b1": "Legal and tax details filled in for you",
@@ -73,7 +73,7 @@ const T = {
     "hero.lede": "De l'idée au produit qui fonctionne. Simple, rapide et pensé pour ce dont vous avez vraiment besoin.",
     "hero.cta1": "Voir les projets", "hero.cta2": "Me contacter",
     "projects.title": "Projets",
-    "status.dev": "En développement", "status.soon": "Bientôt",
+    "status.dev": "En développement", "status.demo": "Démo en ligne", "status.soon": "Bientôt",
     "fatura.tag": "Factures et reçus, à télécharger en PDF.",
     "fatura.desc": "Un générateur de factures et de reçus. Il remplit les mentions légales et fiscales requises pour que vous puissiez télécharger un PDF correct sans lutter avec des modèles Excel ou Word.",
     "fatura.b1": "Mentions légales et fiscales remplies pour vous",
@@ -138,7 +138,7 @@ const T = {
     "hero.lede": "من الفكرة إلى منتج يعمل. بسيط وسريع ومصمم وفق ما تحتاجه فعلاً.",
     "hero.cta1": "عرض المشاريع", "hero.cta2": "تواصل معي",
     "projects.title": "المشاريع",
-    "status.dev": "قيد التطوير", "status.soon": "قريبًا",
+    "status.dev": "قيد التطوير", "status.demo": "نسخة تجريبية", "status.soon": "قريبًا",
     "fatura.tag": "فواتير وإيصالات جاهزة للتحميل بصيغة PDF.",
     "fatura.desc": "أداة نظيفة لإنشاء الفواتير والإيصالات. تملأ البيانات القانونية والضريبية المطلوبة لتحمّل ملف PDF سليمًا دون عناء قوالب Excel أو Word.",
     "fatura.b1": "البيانات القانونية والضريبية تُملأ تلقائيًا",
@@ -199,7 +199,7 @@ const T = {
 };
 
 const PROJECTS = {
-  fatura: { link: "https://github.com/Sameeva/FaturaDZ", demo: "https://fatura-dz.vercel.app", status: "dev",
+  fatura: { link: "https://github.com/Sameeva/FaturaDZ", demo: "https://fatura-dz.vercel.app", status: "demo",
             shots: [["img/fatura-list-crop.png", "img/fatura-list.png", 520, 326],
                     ["img/fatura-invoice-crop.png", "img/fatura-invoice.png", 500, 210],
                     ["img/fatura-editor-crop.png", "img/fatura-editor.png", 552, 389]], hood: 4 },
