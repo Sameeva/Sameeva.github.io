@@ -27,6 +27,10 @@ node scripts/sync-static-text.js --check  # only check; exit 1 if out of date
 
 It also fails if French or Arabic is missing a key that English has.
 
+## License
+
+All rights reserved. See [LICENSE](LICENSE).
+
 ## Notes
 
 - A Content-Security-Policy is set with a `<meta>` tag. If you add inline scripts, external scripts,
