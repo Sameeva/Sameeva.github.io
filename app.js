@@ -384,3 +384,31 @@ document.addEventListener("focusin", (e) => { if (!langMenu.hidden && !langBox.c
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !langMenu.hidden) setLangMenu(false, true); });
 
 applyLang(detectLang());
+
+/* scroll reveal: content below the fold fades in once as it scrolls into view.
+   Hiding is done here, not in the HTML or CSS, and only for what is off-screen, so visitors
+   without JavaScript, crawlers, print and reduced-motion users always get the full page. */
+(function scrollReveal() {
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const targets = document.querySelectorAll(".block h2, .block > p, .block > .actions, .tile, .rows, .chips li, .foot");
+  const waiting = new Set();
+  const show = (el) => {
+    if (!waiting.delete(el)) return;
+    io.unobserve(el);
+    el.classList.add("in");
+    setTimeout(() => { el.classList.remove("reveal", "in"); el.style.removeProperty("--d"); }, 1600);
+  };
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) show(e.target); }),
+    { rootMargin: "0px 0px -6% 0px" });
+  targets.forEach((el) => {
+    if (el.getBoundingClientRect().top < innerHeight) return;   // already on screen (or scrolled past): leave it alone
+    if (el.matches(".tile, .chips li")) el.style.setProperty("--d", Math.min([...el.parentElement.children].indexOf(el) * 90, 360) + "ms");
+    el.classList.add("reveal");
+    waiting.add(el);
+    io.observe(el);
+  });
+  /* at the very bottom, show whatever is left so nothing can stay hidden */
+  addEventListener("scroll", () => {
+    if (waiting.size && innerHeight + scrollY >= document.documentElement.scrollHeight - 4) [...waiting].forEach(show);
+  }, { passive: true });
+})();
