@@ -1,0 +1,6 @@
+# Files that live in the repo but should not be published on the website.
+exclude:
+  - README.md
+  - scripts
+  - .github
+  - .gitignore

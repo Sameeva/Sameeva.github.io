@@ -1,0 +1,56 @@
+name: Sync generated parts of index.html
+
+# index.html carries generated parts (English copy, meta tags, ?v= cache hashes, CSP hash).
+# When app.js, styles.css or index.html is edited anywhere (including the GitHub web editor),
+# this regenerates them and commits the result, so the live site can never serve stale text
+# or pair a new page with an old cached script.
+on:
+  push:
+    branches: [main]
+    paths:
+      - app.js
+      - styles.css
+      - index.html
+      - scripts/**
+      - .github/workflows/sync.yml
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-generated
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate
+        id: sync
+        run: node scripts/sync-static-text.js
+        continue-on-error: true   # still commit what was regenerated, then fail below if a check failed
+
+      - name: Commit and republish if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "Nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -am "Sync generated parts of index.html"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            # Pushes made with the workflow token do not always start a Pages build, so ask for one explicitly.
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request failed (a build may already be running)."
+          fi
+
+      - name: Fail if a check did not pass
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "::error::scripts/sync-static-text.js reported a problem (see the Regenerate step), e.g. French or Arabic is missing a key that English has."
+          exit 1
